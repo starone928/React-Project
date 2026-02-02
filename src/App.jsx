@@ -10,6 +10,7 @@ function App() {
     <>
      <h2>hi</h2>
      <div>welcome</div>
+     <hr/>
     </>
   )
 }
