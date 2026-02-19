@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import CodeThree from'./CodeThree'
+// import NewsApp from'./NewsApp'
+import WeatherApp from './WeatherApp'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
+
+function App(){
+  return(
     <>
-     <h2>hi</h2>
-     <div>welcome</div>
-     <hr/>
+    {/* <CodeThree/>
+    <NewsApp/> */}
+    <WeatherApp/>
+   
+    
     </>
   )
 }
