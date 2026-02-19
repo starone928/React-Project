@@ -27,10 +27,10 @@ const NewsApp = () => {
                 {
                     data.map((item, i) => {
                         return (
-                            <div class="bg-lime-300 rounded-4xl" key={i}>
+                            <div class=" " key={i}>
 
-                                <div class="columns-1 max-w-sm rounded overflow-hidden shadow-lg min-w-[100px]">
-                                    <img class="w-full hover:brightness-150 hover:scale-120 rounded-4xl transition duration-1000 border-4 border-pink-600" src={item.image_url} alt="Sunset in the mountains" />
+                                <div class="columns-1 max-w-sm  overflow-hidden  min-w-25 bg-lime-300 hover:scale-105 transition duration-1000 hover:bg-fuchsia-200  rounded-4xl border-t-4 border-t-green-500 shadow-2xl shadow-blue-800 ">
+                                    <img class="w-full   border-pink-600" src={item.image_url} alt="Sunset in the mountains" />
                                     <div class="px-6 py-4">
                                         <div class="font-bold text-xl mb-2 text-blue-800">{item.title}</div>
                                         <p class="text-gray-700 text-base justify-center">{item.description}</p>
@@ -50,7 +50,7 @@ const NewsApp = () => {
                                         <p class="font-bold"><span class="text-orange-800 text-2xl font-bold" >Title:-</span>{item.title}</p>
                                     </div>
                                 </div>
-                                <hr />
+                              
                             </div>
                         )
                     })

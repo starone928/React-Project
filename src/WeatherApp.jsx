@@ -14,6 +14,9 @@ const cityName = [
         name: "Delhi"
     },
     {
+        name: "Wardha"
+    },
+    {
         name: "Yavatmal"
     }
 ]

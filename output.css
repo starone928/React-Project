@@ -237,6 +237,9 @@
   .max-w-xl {
     max-width: var(--container-xl);
   }
+  .min-w-25 {
+    min-width: calc(var(--spacing) * 25);
+  }
   .min-w-\[100px\] {
     min-width: 100px;
   }
