@@ -1,35 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
-const cityName = [
-    {
-        name: "Pune",
-    },
-    {
-        name: "Mumbai",
-    },
-    {
-        name: "Goa"
-    },
-    {
-        name: "Delhi"
-    },
-    {
-        name: "Wardha"
-    },
-    {
-        name: "Yavatmal"
-    }
-]
-
+const cityName = ["Pune", "Mumbai", "Goa", "Delhi", "Wardha", "Yavatmal", "Sangli", "Satara", "Solapur", "Kolhapur","Ahmednagar","Dhule","Jalgaon","Nandurbar","Nashik"]
 const WeatherApp = () => {
-
     const [data, setData] = useState(null);
     const [loader, setLoader] = useState(false);
     const [city, setCity] = useState('Pune');
-
+    
     const weatherApi = `http://api.weatherapi.com/v1/current.json?key=bc03d1f21b9b4fea80b74349260802&q=${city}&aqi=no`
     // `http://api.weatherapi.com/v1/current.json?key=bc03d1f21b9b4fea80b74349260802&q=${city}&aqi=no`
-
+    
     const getWeather = async () => {
         try {
             setLoader(true);
@@ -37,23 +16,17 @@ const WeatherApp = () => {
             const result = await response.json();
             setData(result)
             timetoint(result?.current.last_updated_epoch)
-
         } catch (error) {
             console.log(error);
         } finally {
             setLoader(false);
         }
     }
-
-
     function timetoint(epochSeconds) {
         const date = new Date(epochSeconds * 1000);
         const hour = date.getHours(); // 0–23
         console.log(hour);
     }
-
-
-
     useEffect(() => {
         getWeather();
 
@@ -61,41 +34,36 @@ const WeatherApp = () => {
 
     return (
         <>
-            <div className="flex w-full justify-center p-6 flex-col">
-                <h1 className='flex justify-center'>Weather App</h1>
-
-                <select className="max-w-xl mx-auto py-3 px-4 pe-9 border block w-full m-6" name="city" id="city" onChange={(e) => setCity(e.target.value)}>
+            <div className="w-120 h-150 flex flex-col justify-between flex-wrap  items-center p-10 ml-180 mt-20 rounded-4xl border-4 border-green-500 shadow-2xl bg-amber-100 ">
+                <h1 className="text-5xl font-bold text-green-800">Weather App</h1>
+                <select className="px-4 rounded-lg text-xl border-2 border-rose-400 " name="city" id="city" onChange={(e) => setCity(e.target.value)}>
                     <option disabled value="">Choose city</option>
                     {cityName.map((cName, i) => (
-                        <option key={i} value={cName.name}>
-                            {cName.name}
+                        <option key={i} value={cName}>
+                            {cName}
                         </option>
                     ))}
                 </select>
                 {
                     loader
                         ?
-                        <h1 className='flex items-center justify-center w-full h-[90vh] text-2xl font-bold'>
-                            Loading.....
-                        </h1>
+                        <h1 className="text-xl">Loading..... </h1>
                         :
                         <>
-                            <div className='flex item-center gap-2'>
-                                <h1 className='text-xl text-gray-800'>{data?.location.name}, </h1>
-                                <h1 className='text-xl text-gray-800'>{data?.location.region}, </h1>
-                                <h1 className='text-xl text-gray-800'>{data?.location.country}</h1>
+                            <div className="bg-cyan-200 rounded-xl p-3 shadow-lg text-center ">
+                                <h1 className="text-3xl font-bold underline text-rose-600">{data?.location.name} </h1>
+                                <h1 className="text-xl font-semibold">{data?.location.region} </h1>
+                                <h1 className="text-xl font-semibold">{data?.location.country}</h1>
                             </div>
-                            <div>
+                            <div className="text-2xl m-2 text-center text-amber-700">
                                 {Date(data?.current.last_updated_epoch)}
-                                <img src={data?.current.condition.icon} alt={data?.current.text} />
-                                <p>{data?.current.condition.text}</p>
+                                <img className="mx-auto w-20 h-20 animate-bounce" src={data?.current.condition.icon} alt={data?.current.text} />
+                                <p className="text-3xl font-semibold text-blue-500"style={{textShadow: "10px red" }}>{data?.current.condition.text}</p>
                             </div>
                         </>
-
                 }
             </div>
         </>
     )
 }
-
 export default WeatherApp
